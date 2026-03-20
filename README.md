@@ -4,5 +4,5 @@ This project demonstrates how to set up a modern React application using **Vite*
 
 ---
 
-## Project Link: 
+## Project Link: https://vite-react-tailwind-daisy-setup.netlify.app/
 
