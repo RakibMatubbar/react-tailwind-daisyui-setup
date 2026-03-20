@@ -1,7 +1,35 @@
 
+import { useState } from 'react'
+
 import './App.css'
 
 function App() {
+
+  // For Copping Code:
+  const [copied, setCopied] = useState('')
+
+  const handleCopy = (text, id) => {
+    navigator.clipboard.writeText(text)
+    setCopied(id)
+    setTimeout(() => setCopied(''), 2000)
+  }
+
+
+  // For Tow's Info:
+  const stepTwoCode = `"overrides": {
+  "@tailwindcss/vite": {
+    "vite": "$vite"
+    }
+  }`
+
+  // For Six's Info:
+  const stepSixCode = `import { defineConfig } from 'vite'
+  import react from '@vitejs/plugin-react'
+  import tailwindcss from '@tailwindcss/vite'
+
+  export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  })`
 
   return (
     <>
@@ -13,7 +41,7 @@ function App() {
         <div className='flex justify-center items-center'>
 
           <div className='p-10 space-y-4'>
-            <p className='text-blue-400 text-xl font-bold'>SETUP GUIDE -REACT PROJECT</p>
+            <p className='text-blue-400 text-xl font-bold'>SETUP GUIDE - REACT PROJECT <br /> <span className='text-green-500'>If Your PowerShell Is Not Working You Can Use CMD</span>  </p>
 
             <p className='text-white text-4xl font-bold'>Vite + React + <br />
               <span className='text-blue-600'>Tailwind CSS</span> + DaisyUI</p>
@@ -25,7 +53,7 @@ function App() {
 
           <div className='flex gap-4 justify-center items-center'>
             <a href="https://www.linkedin.com/in/rakib-matubbar/?skipRedirect=true" target="_blank" rel="noopener noreferrer">
-              <img className='w-[100px] bg-white rounded-md' src="/public/In.svg" alt="description" />
+              <img className='w-25 bg-white rounded-md' src="/public/In.svg" alt="description" />
             </a>
 
             <a className='text-blue-600 text-xl hover:underline' href="https://www.linkedin.com/in/rakib-matubbar/?skipRedirect=true" target='-blank'>Visit My LinkedIn Profile.</a>
@@ -66,7 +94,11 @@ function App() {
 
             <div className='text-white bg-gray-500 rounded-md p-4 flex justify-between items-center'>
               <p id='step-one-code'>npm create vite@latest</p>
-              <p id='step-one-copy' className='bg-[#1D232A] p-1 rounded-md cursor-pointer'>Copy</p>
+
+              <p onClick={() => handleCopy('npm create vite@latest', 'one')}
+                className='bg-[#1D232A] p-1 rounded-md cursor-pointer'>
+                {copied === 'one' ? 'Copied!' : 'Copy'}
+              </p>
             </div>
 
           </div>
@@ -120,7 +152,10 @@ function App() {
 }`}
               </pre>
 
-              <p id='step-two-copy' className='bg-[#1D232A] p-1 rounded-md cursor-pointer'>Copy</p>
+              <p onClick={() => handleCopy(stepTwoCode, 'two')}
+                className='bg-[#1D232A] p-1 rounded-md cursor-pointer'>
+                {copied === 'two' ? 'Copied!' : 'Copy'}
+              </p>
             </div>
 
           </div>
@@ -159,7 +194,11 @@ function App() {
 
             <div className='text-white bg-gray-500 rounded-md p-4 flex justify-between items-center'>
               <p id='step-three-code'>npm install</p>
-              <p id='step-three-copy' className='bg-[#1D232A] p-1 rounded-md cursor-pointer'>Copy</p>
+
+              <p onClick={() => handleCopy('npm install', 'three')}
+                className='bg-[#1D232A] p-1 rounded-md cursor-pointer'>
+                {copied === 'three' ? 'Copied!' : 'Copy'}
+              </p>
             </div>
 
           </div>
@@ -199,7 +238,11 @@ function App() {
 
             <div className='text-white bg-gray-500 rounded-md p-4 flex justify-between items-center'>
               <p id='step-four-code'>npm install tailwindcss@latest @tailwindcss/vite@latest daisyui@latest</p>
-              <p id='step-four-copy' className='bg-[#1D232A] p-1 rounded-md cursor-pointer'>Copy</p>
+
+              <p onClick={() => handleCopy('npm install tailwindcss@latest @tailwindcss/vite@latest daisyui@latest', 'four')}
+                className='bg-[#1D232A] p-1 rounded-md cursor-pointer'>
+                {copied === 'four' ? 'Copied!' : 'Copy'}
+              </p>
             </div>
 
           </div>
@@ -241,7 +284,13 @@ function App() {
             <div className='text-white bg-gray-500 rounded-md p-4 flex justify-between items-center'>
               <p id='step-five-code'>@import "tailwindcss"; <br />
                 @plugin "daisyui";</p>
-              <p id='step-five-copy' className='bg-[#1D232A] p-1 rounded-md cursor-pointer'>Copy</p>
+
+              <p onClick={() => handleCopy(`
+@import "tailwindcss";
+@plugin "daisyui";`, 'five')}
+                className='bg-[#1D232A] p-1 rounded-md cursor-pointer'>
+                {copied === 'five' ? 'Copied!' : 'Copy'}
+              </p>
             </div>
 
           </div>
@@ -292,8 +341,10 @@ export default defineConfig({
                 </pre>
               </div>
 
-              <p id='step-six-copy' className='bg-[#1D232A] p-1 rounded-md cursor-pointer shrink-0'>Copy</p>
-
+              <p onClick={() => handleCopy(stepSixCode, 'five')}
+                className='bg-[#1D232A] p-1 rounded-md cursor-pointer'>
+                {copied === 'five' ? 'Copied!' : 'Copy'}
+              </p>
             </div>
 
             <div className='bg-[#18213a] border-l-4 border-indigo-700 rounded-md p-4 flex gap-3 items-start'>
@@ -344,7 +395,11 @@ export default defineConfig({
             <div className='text-white bg-gray-500 rounded-md p-4 flex justify-between items-center'>
               <p id='step-seven-code'>import './index.css'</p>
               <p className='text-black font-bold'>Optional - Just for check:</p>
-              <p id='step-seven-copy' className='bg-[#1D232A] p-1 rounded-md cursor-pointer'>Copy</p>
+
+              <p onClick={() => handleCopy("import './index.css'", 'seven')}
+                className='bg-[#1D232A] p-1 rounded-md cursor-pointer'>
+                {copied === 'seven' ? 'Copied!' : 'Copy'}
+              </p>
             </div>
 
           </div>
@@ -390,6 +445,21 @@ export default defineConfig({
                 <p className='text-blue-400'>Now you can use Tailwindcss | daisyUI : For Checking...</p>
               </p>
 
+            </div>
+
+            <div class="flex items-center gap-2 bg-[#2d2d2d] px-4 py-3 rounded-lg w-fit">
+              <span class="w-3.5 h-3.5 rounded-full bg-[#ff5f57]"></span>
+              <span class="w-3.5 h-3.5 rounded-full bg-[#febc2e]"></span>
+              <span class="w-3.5 h-3.5 rounded-full bg-[#28c840]"></span>
+            </div>
+
+            <div className='text-white bg-gray-500 rounded-md p-4 flex justify-between items-center'>
+              <p id='step-eight-code'>npm run dev</p>
+
+              <p onClick={() => handleCopy("npm run dev", 'eight')}
+                className='bg-[#1D232A] p-1 rounded-md cursor-pointer'>
+                {copied === 'eight' ? 'Copied!' : 'Copy'}
+              </p>
             </div>
 
           </div>
