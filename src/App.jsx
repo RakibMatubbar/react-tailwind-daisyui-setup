@@ -1,6 +1,8 @@
 
 import { useState } from 'react'
 
+import logo from './assets/In.svg'
+
 import './App.css'
 
 function App() {
@@ -38,7 +40,7 @@ function App() {
       <div className='bg-[#1D232A] border-4 border-x-cyan-300 space-y-5'>
 
         {/* Header Section: */}
-        <div className='flex justify-center items-center'>
+        <div className='flex flex-col lg:flex-row justify-center items-center'>
 
           <div className='p-10 space-y-4'>
             <p className='text-blue-400 text-xl font-bold'>SETUP GUIDE - REACT PROJECT <br /> <span className='text-green-500'>If Your PowerShell Is Not Working You Can Use CMD</span>  </p>
@@ -53,13 +55,15 @@ function App() {
 
           <div className='flex gap-4 justify-center items-center'>
             <a href="https://www.linkedin.com/in/rakib-matubbar/?skipRedirect=true" target="_blank" rel="noopener noreferrer">
-              <img className='w-25 bg-white rounded-md' src="/public/In.svg" alt="description" />
+              <img className='w-25 bg-white rounded-md' src={logo} alt="description" />
             </a>
 
             <a className='text-blue-600 text-xl hover:underline' href="https://www.linkedin.com/in/rakib-matubbar/?skipRedirect=true" target='-blank'>Visit My LinkedIn Profile.</a>
           </div>
 
         </div>
+
+        <hr className='text-white' />
 
         {/* Step One: */}
         <div className='w-10/12 mx-auto bg-[#171D22] p-4 rounded-md flex gap-4'>
